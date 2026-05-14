@@ -2,14 +2,39 @@
 
 ## 2026年5月
 
-### 5月12日下午
+### 5月14日下午
+- 心跳检查: 待办 12个（进行中，无变化）
+- MEMORY.md 例行更新
+
+### 5月13日下午/晚间
+- CK query error report 脚本: `run.sh` → `run.py` (修复 subprocess body 截断 bug)
+- Bug: `subprocess.run(capture_output=True)` + `stdout.rsplit()` 导致 HTTP status 200 被误认为 body，body 截断为 `'200'`
+- 修复: 改用 `Popen.communicate()` + `decode('utf-8', errors='replace')` 正确提取 JSON body
+- 修复后报表正常生成: 总错误 1518 次(TYPE_MISMATCH 95.5%), 错误率 0.01%, 25 个涉及时段
+- 样例查询字段调整: `exception_message` → `type` (列名不存在)
+
+### 5月13日凌晨
+- 心跳检查: 待办 12个（进行中，无变化）
+- MEMORY.md 例行更新
+- CK query error report 脚本 bug 修复: `subprocess.run` + `capture_output=True` 改为 `subprocess.Popen` + `communicate()` + `decode('utf-8', errors='replace')`，解决了 body 提取被截断为 `'200'` 的问题
+- 报告新增: 完整 SQL + type 字段（exception_message 列不存在），按错误类型分组展示 Top3 样例 + 根因分析
+- 近24小时统计结果: 1518次错误，TYPE_MISMATCH(53) 占95.5%，NO_COMMON_TYPE(386) 占4.1%
+
+### 5月13日下午
 - 待办事项: 12个（进行中，无变化）
 - 新增待办: 记录模型是否可以跟日志模型合并的讨论与设计
 
 ### 5月12日晚间
+- CK query error report 脚本重构: `run.sh` → `run.py` (解决 shell 转义问题)
+- 报告新增: 完整 SQL + exception (不缩略)、Top3 错误类型样例、错误原因总结章节
+- 根因提取逻辑: 正则匹配 TYPE_MISMATCH/UNKNOWN_IDENTIFIER/NO_COMMON_TYPE 等错误模式
 - git-commit-tracker (5/11~5/12): 71次提交，55人参与，AI提交11次(15%)
 - Bug修复: 2个, 功能开发: 18个
 - 提交排名: 杨宪亮(14次,57%AI), 张翔(3次,0%AI), 王睿(2次,100%AI), 王俊(1次,100%AI)
+
+### 5月12日下午
+- 待办事项: 12个（进行中，无变化）
+- 新增待办: 记录模型是否可以跟日志模型合并的讨论与设计
 
 ### 5月11日上午
 - 心跳检查: 待办 11个（进行中，无变化）
