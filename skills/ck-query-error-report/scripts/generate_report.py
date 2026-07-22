@@ -116,8 +116,34 @@ def main():
     attempt = sys.argv[7]
     report_dir = sys.argv[8]
 
-    summary_data = json.loads(summary_body)
-    samples_data = json.loads(samples_body)
+    try:
+        summary_data = json.loads(summary_body)
+    except json.JSONDecodeError as e:
+        # API 可能返回了纯文本 ClickHouse 错误信息
+        print(f"汇总数据 JSON 解析失败: {e}")
+        print(f"原始内容 (前1000字符): {summary_body[:1000]}")
+        sys.exit(1)
+
+    try:
+        samples_data = json.loads(samples_body)
+    except json.JSONDecodeError as e:
+        # API 可能返回了纯文本 ClickHouse 错误信息
+        print(f"样例数据 JSON 解析失败: {e}")
+        print(f"原始内容 (前1000字符): {samples_body[:1000]}")
+        sys.exit(1)
+
+    # 检查 API 返回 code，非 200 则记录错误并退出
+    if summary_data.get("code") != 200:
+        err_msg = summary_data.get("message", "Unknown error")
+        print(f"汇总查询失败: code={summary_data.get('code')}, message={err_msg}")
+        print(f"原始内容 (前500字符): {summary_body[:500]}")
+        sys.exit(1)
+
+    if samples_data.get("code") != 200:
+        err_msg = samples_data.get("message", "Unknown error")
+        print(f"样例查询失败: code={samples_data.get('code')}, message={err_msg}")
+        print(f"原始内容 (前500字符): {samples_body[:500]}")
+        sys.exit(1)
 
     request_id = summary_data.get("requestId", "unknown")
     query_host = summary_data.get("result", {}).get("queryHost", "unknown")

@@ -79,9 +79,9 @@ remote_branch_exists() {
     cd "$GIT_REPO_PATH" 2>/dev/null || return 1
 
     # 先尝试获取最新分支信息（如果网络可达）
-    if git fetch origin "$branch" 2>/dev/null; then
+    if timeout 20 git fetch origin "$branch" 2>/dev/null; then
         # 检查远程分支是否存在
-        git ls-remote --heads origin "$branch" 2>/dev/null | grep -q "refs/heads/${branch}$"
+        timeout 10 git ls-remote --heads origin "$branch" 2>/dev/null | grep -q "refs/heads/${branch}$"
     else
         # 网络不可达，检查本地缓存的远程分支
         git show-ref --verify --quiet "refs/remotes/origin/${branch}" 2>/dev/null
@@ -97,9 +97,9 @@ get_branches_by_prefix() {
     cd "$GIT_REPO_PATH" 2>/dev/null || return
 
     # 尝试从远程获取分支列表（如果网络可达）
-    if git ls-remote --heads origin 2>/dev/null >/dev/null; then
+    if timeout 15 git ls-remote --heads origin 2>/dev/null >/dev/null; then
         # 获取所有远程分支名（refs/heads/后部分）
-        git ls-remote --heads origin 2>/dev/null | \
+        timeout 15 git ls-remote --heads origin 2>/dev/null | \
             sed 's|.*refs/heads/||' | \
             grep "^${prefix}"
     else
@@ -262,7 +262,7 @@ get_branch_commits() {
 
     # 先获取远程分支最新信息
     log_info "  获取分支: $branch"
-    git fetch origin "$branch" 2>/dev/null || true
+    timeout 20 git fetch origin "$branch" 2>/dev/null || true
     
     # 尝试拉取远程分支最新代码到本地
     # 检查本地是否存在该分支，不存在则创建并跟踪
@@ -279,7 +279,7 @@ get_branch_commits() {
     fi
 
     # 检查远程分支是否存在
-    if ! git ls-remote --heads origin "$branch" 2>/dev/null | grep -q "$branch"; then
+    if ! timeout 10 git ls-remote --heads origin "$branch" 2>/dev/null | grep -q "$branch"; then
         return
     fi
 
@@ -344,7 +344,7 @@ get_all_commits() {
         
         # 先从远程仓库获取所有分支的最新代码
         log_info "从远程仓库获取最新代码..."
-        if git fetch --all 2>&1; then
+        if timeout 30 git fetch --all 2>&1; then
             log_success "远程代码同步完成"
         else
             log_warn "远程代码同步失败，使用本地缓存"
