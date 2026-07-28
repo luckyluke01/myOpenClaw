@@ -2451,7 +2451,79 @@
 - MEMORY.md 例行更新
 - 当前时间: Jul 28 16:27 CST
 
+### 7月28日晚间（22:04）
+- 心跳检查: 待办 29行（无变化）
+- git-commit-tracker cron 任务 delivery 配置修复：announce→none（解决飞书通知 400 错误导致历史任务被标记 error）
+- fetch 超时修复：fetch --all 30s→120s，单分支 fetch 20s→60s（解决 dev-4.1.0.0 分支因 fetch 超时导致提交漏抓的问题）
+- eBPF 调研文档补充：新增第 9 章"eBPF 与可观测性"，整合 DeepFlow《eBPF 是实现可观测性的关键技术》精华（APM 缺陷、eBPF 优势、DeepFlow 三大核心功能、真实案例）
+- MEMORY.md 例行更新
+- 当前时间: Jul 28 22:04 CST
+
+### 7月28日中午（11:44-11:49）
+- 修复 git-commit-tracker cron 任务 delivery 配置（announce→none）
+- 确认 7/27 报告"无提交"的根因：fetch 超时导致 dev-4.1.0.0 分支未更新
+- 增大 fetch 超时：30s→120s
+
 ### 7月27日中午（12:09）
 - 心跳检查: 待办 11个（进行中，无变化）
 - MEMORY.md 例行更新
 - 当前时间: Jul 27 12:09 CST
+Jul 28 16:52 CST
+
+### 7月28日下午（16:52）
+- 心跳检查: 待办 11个（进行中，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Jul 28 16:52 CST
+
+### 7月28日下午（14:27）
+- 修复 git-commit-tracker 超时问题：
+  - `fetch --all` 超时: 30s → 120s
+  - 单分支 fetch 超时: 20s → 60s
+  - 根因: dev-4.1.0.0 分支 fetch 超时导致漏抓王宏旭 947e9b84a1d9（2026-07-27 20:26）等提交
+- 修复 git-commit-tracker-daily delivery 模式: "announce" → "none"（解决飞书推送 400 错误导致的连续 143 次 error）
+- 确认 7/27 20:00~20:30 期间有3条提交（王宏旭、邢雪杰、张翔），报告为空是 fetch 超时导致的漏抓，非数据问题
+
+### 7月28日下午（17:23）
+- 心跳检查: 待办 11个（进行中，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Jul 28 17:23 CST
+
+### 7月28日晚间（19:24）
+- 心跳检查: 待办 11个（进行中，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Jul 28 19:24 CST
+- git-commit-tracker cron delivery 修复: announce → none（避免飞书通知 400 错误）
+- git-commit-tracker fetch 超时修复: 30s → 120s, 20s → 60s（7/27 报告漏掉 dev-4.1.0.0 分支 commit 的根因）
+- eBPF技术文档补充: DeepFlow《eBPF是可观测性关键技术》精华整理，新增第9章
+- CK query error report: 今日执行成功，报告无变化
+
+### 7月28日晚间（20:01）
+- 心跳检查: 待办 11个（进行中，无变化）
+- obsidian-auto-commit: ece...（成功）
+- CK 错误报表任务成功 (2026-07-28 20:01): HTTP 200，报告无变化无需 git push
+- git-commit-tracker: 成功（已修复 fetch 超时）
+- MEMORY.md 例行更新
+- 当前时间: Jul 28 20:01 CST
+
+### 7月28日晚间（20:33）
+- 心跳检查: 待办 11个（进行中，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Jul 28 20:33 CST
+
+### 7月28日下午（13:44~14:27）
+- Luke 反馈 git-commit-tracker 报告数据不准确（7/27 无提交记录但实际有王宏旭的 commit）
+- 根因：commit 947e9b84a1 在 `dev-4.1.0.0` 分支，`fetch --all` 超时（30s）导致本地分支缓存未更新，该分支的提交被漏掉
+- 修复：generate-report.sh 中 `timeout 30 git fetch --all` → `timeout 120`，`timeout 20 git fetch origin` → `timeout 60`
+- git-commit-tracker-daily cron delivery.mode 从 "announce" 改为 "none"（飞书通知 400 错误导致任务被标记 error）
+- eBPF 可观测性文档更新：从 DeepFlow 文章《eBPF 是实现可观测性的关键技术》提炼精华，补充到 eBPF技术体系调研.md 第9章
+
+### 7月28日中午（12:23）
+- 心跳检查: 待办 11个（进行中，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Jul 28 12:23 CST
+
+### 7月28日早间（08:15）
+- 心跳检查: 待办 11个（进行中，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Jul 28 08:15 CST
+
