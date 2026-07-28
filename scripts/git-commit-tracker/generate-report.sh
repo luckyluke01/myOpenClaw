@@ -262,7 +262,7 @@ get_branch_commits() {
 
     # 先获取远程分支最新信息
     log_info "  获取分支: $branch"
-    timeout 20 git fetch origin "$branch" 2>/dev/null || true
+    timeout 60 git fetch origin "$branch" 2>/dev/null || true
     
     # 尝试拉取远程分支最新代码到本地
     # 检查本地是否存在该分支，不存在则创建并跟踪
@@ -344,7 +344,7 @@ get_all_commits() {
         
         # 先从远程仓库获取所有分支的最新代码
         log_info "从远程仓库获取最新代码..."
-        if timeout 30 git fetch --all 2>&1; then
+        if timeout 120 git fetch --all 2>&1; then
             log_success "远程代码同步完成"
         else
             log_warn "远程代码同步失败，使用本地缓存"

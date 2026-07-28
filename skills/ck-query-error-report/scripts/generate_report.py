@@ -259,7 +259,6 @@ SELECT
   exception_code,
   errorCodeToName(exception_code) AS exception_name,
   query,
-  exception_message,
   user,
   event_time
 FROM system.query_log_distributed_cluster_atomic

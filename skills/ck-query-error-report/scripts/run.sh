@@ -38,7 +38,6 @@ SQL_SAMPLES='SELECT
   exception_code,
   errorCodeToName(exception_code) AS exception_name,
   query,
-  exception_message,
   user,
   event_time
 FROM system.query_log_distributed_cluster_atomic
@@ -62,7 +61,7 @@ do_query() {
 
   while [ $attempt -lt $max_attempts ]; do
     attempt=$((attempt + 1))
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] 请求尝试 #$attempt"
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] 请求尝试 #$attempt" >&2
 
     full_response=$(curl -s -w "\n___HTTP_CODE:%{http_code}" -X POST "$API_URL" \
       -H "Cookie: $COOKIE" \
@@ -73,13 +72,13 @@ do_query() {
     body=$(echo "$full_response" | sed '/___HTTP_CODE:/d')
 
     if [ "$http_code" = "200" ]; then
-      echo "[$(date '+%Y-%m-%d %H:%M:%S')] 请求成功 (HTTP 200)"
+      echo "[$(date '+%Y-%m-%d %H:%M:%S')] 请求成功 (HTTP 200)" >&2
       echo "$body"
       return 0
     else
-      echo "[$(date '+%Y-%m-%d %H:%M:%S')] 请求失败 (HTTP $http_code)，3秒后重试..."
+      echo "[$(date '+%Y-%m-%d %H:%M:%S')] 请求失败 (HTTP $http_code)，3秒后重试..." >&2
       if [ $attempt -eq $max_attempts ]; then
-        echo "已达最大重试次数 ($max_attempts)，退出"
+        echo "已达最大重试次数 ($max_attempts)，退出" >&2
         exit 1
       fi
       sleep 3
