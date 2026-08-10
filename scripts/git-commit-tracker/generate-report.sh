@@ -303,14 +303,14 @@ get_branch_commits() {
     if [ -n "$author_filter" ]; then
         # shellcheck disable=SC2086
         git log "${branch_ref}" --since="${since_date} 20:00:00" --until="${until_date} 20:00:00" \
-            --format="%H%x00%an%x00%ad%x00%s%x00${branch}" --date=short --no-merges ${author_filter} 2>/dev/null | awk 'BEGIN {FS="\0"; OFS="|"} {print $1, $2, $3, $4, $5}' | while IFS='|' read -r hash author date message branch_name; do
+            --format="%H%x00%an%x00%cd%x00%s%x00${branch}" --date=short --no-merges ${author_filter} 2>/dev/null | awk 'BEGIN {FS="\0"; OFS="|"} {print $1, $2, $3, $4, $5}' | while IFS='|' read -r hash author date message branch_name; do
             [ -z "$hash" ] && continue
             stats=$(git show --stat --format="" "$hash" 2>/dev/null | tail -1 | tr '\n' ' ')
             echo "${hash}|${author}|${date}|${message}|${stats}|${branch_name}"
         done
     else
         git log "${branch_ref}" --since="${since_date} 20:00:00" --until="${until_date} 20:00:00" \
-            --format="%H%x00%an%x00%ad%x00%s%x00${branch}" --date=short --no-merges 2>/dev/null | awk 'BEGIN {FS="\0"; OFS="|"} {print $1, $2, $3, $4, $5}' | while IFS='|' read -r hash author date message branch_name; do
+            --format="%H%x00%an%x00%cd%x00%s%x00${branch}" --date=short --no-merges 2>/dev/null | awk 'BEGIN {FS="\0"; OFS="|"} {print $1, $2, $3, $4, $5}' | while IFS='|' read -r hash author date message branch_name; do
             [ -z "$hash" ] && continue
             stats=$(git show --stat --format="" "$hash" 2>/dev/null | tail -1 | tr '\n' ' ')
             echo "${hash}|${author}|${date}|${message}|${stats}|${branch_name}"
@@ -363,7 +363,7 @@ get_all_commits() {
         fi
         
         # 获取所有分支的提交
-        local git_cmd="git log --all --since=\"${since_date} 20:00:00\" --until=\"${until_date} 20:00:00\" --format=\"%H%x00%an%x00%ad%x00%s%x00%D\" --date=short --no-merges $author_filter 2>/dev/null"
+        local git_cmd="git log --all --since=\"${since_date} 20:00:00\" --until=\"${until_date} 20:00:00\" --format=\"%H%x00%an%x00%cd%x00%s%x00%D\" --date=short --no-merges $author_filter 2>/dev/null"
         
         local raw_commits
         raw_commits=$(eval "$git_cmd" | awk 'BEGIN {FS="\0"; OFS="|"} {print $1, $2, $3, $4, $5}')
