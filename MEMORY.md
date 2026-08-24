@@ -3425,3 +3425,18 @@ Jul 28 16:52 CST
 - Gateway 已重启（SIGUSR1），待观察
 - MEMORY.md 例行更新
 - 当前时间: Aug 24 14:17 CST
+
+### 8月24日下午（15:19）
+- 心跳检查: 待办 2个（来自 MOC，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Aug 24 15:19 CST
+
+### 8月24日下午（13:59）
+- Ceph RGW 系统调研完成：整理至 `02-领域/Ceph-RGW-系统调研.md`，涵盖架构、HTTP Frontend、数据布局、Pool 架构等
+- 当前时间: Aug 24 13:59 CST
+
+### 8月24日晚间（18:57）
+- 心跳检查: 待办 2个（MOC: 查看 Inbox、同步 Feishu 待办，无变化）
+- Gitee Forge 周报手动重跑成功（本周 85个任务/729.4h，上周数据）
+- 所有定时任务 EIO 错误排查：WSL2 `/mnt/f` 路径偶发 I/O 问题，gateway 已重启
+- 当前时间: Aug 24 18:57 CST
