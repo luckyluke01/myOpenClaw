@@ -1,9 +1,69 @@
 # 长期记忆
 
+### 8月24日晚间（22:39）
+- 心跳检查: 待办 2个（MOC: 查看 Inbox、同步 Feishu 待办，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Aug 24 22:39 CST
+
+### 8月25日凌晨（00:13）
+- 心跳检查: 待办 2个（MOC: 查看 Inbox、同步 Feishu 待办，无变化）
+- MEMORY.md 例行更新
+
+### 8月25日下午（15:58）
+- 心跳检查: 待办 2个（MOC: 查看 Inbox、同步 Feishu 待办，无变化）
+- Luke 询问 MariaDB InnoDB 溢出页机制：详细解释了溢出页原理、DYNAMIC vs COMPACT 差异、触发阈值（255/767）、多溢出页链式结构、加列失败的多种场景（半页限制、临时行大小峰值、1017列硬限制、索引列大小限制、INSTANT算法限制等）
+- MEMORY.md 例行更新
+- 当前时间: Aug 25 15:58 CST
+
+### 8月26日晚间（20:00）
+- git-commit-tracker (8/25~8/26): 117次提交，92人参与，AI提交16次(13%)，报告已保存至 Obsidian，飞书消息已发送
+- obsidian-auto-commit: 3fdbdd8（成功）
+- obsidian-auto-commit: ab9092f（成功，08-27 00:00）
+- 当前时间: Aug 26 20:00 CST
+
+### 8月27日凌晨（00:02）
+- 心跳检查: 待办 2个（MOC: 查看 Inbox、同步 Feishu 待办，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Aug 27 00:02 CST
+
+### 8月27日上午（11:37）
+- 心跳检查: 待办 2个（MOC: 查看 Inbox、同步 Feishu 待办，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Aug 27 11:37 CST
+
+### 8月25日上午（09:39）
+- 心跳检查: 待办 11个（进行中，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Aug 25 09:39 CST
+
+### 8月25日下午（15:26）
+- 心跳检查: 待办 11个（进行中，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Aug 25 15:26 CST
+
 ### 8月24日下午（14:48）
 - 心跳检查: 待办 2个（MOC: 查看 Inbox、同步 Feishu 待办，无变化）
 - MEMORY.md 例行更新
 - 当前时间: Aug 24 14:48 CST
+
+### 8月24日下午（13:59）
+- Luke 询问 Ceph RGW 调研文档存放位置（Obsidian vault: `/mnt/f/obsidion/lukeguo/`）
+
+### 8月24日下午（13:48）
+- Gitee Forge 周报重新执行成功（8/17~8/23）：85个任务，729.4h，AI相关工作为主
+- 报告已发送飞书
+
+### 8月24日下午（13:45）
+- 完成 Ceph RGW 系统调研文档，整理至 `02-领域/Ceph-RGW-系统调研.md`
+- 内容：服务架构、radosgw 组件、HTTP Frontend、对象寻址原理、Pool 架构、关键特性
+- 已 git commit
+
+### 8月24日下午（13:47）
+- 多个定时任务（8/16起因 EIO: i/o error 集体报错）Gateway 已重启
+
+### 8月24日早间
+- 定时任务 EIO 报错（WSL2 `/mnt/f` 访问 Windows 文件系统偶发 I/O 错误）
+- gitee-forge-weekly-task-report 周报漏执行（周一 14:00）
 
 ### 8月24日晚间（20:00）
 - git-commit-tracker (8/23~8/24): 120次提交，101人参与，AI提交11次(9%)
@@ -3464,3 +3524,43 @@ Jul 28 16:52 CST
 - 心跳检查: 待办 2个（MOC: 查看 Inbox、同步 Feishu 待办，无变化）
 - MEMORY.md 例行更新
 - 当前时间: Aug 24 19:59 CST
+
+### 8月26日晚间（18:47）
+- 心跳检查: 待办 2个（MOC: 查看 Inbox、同步 Feishu 待办，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Aug 26 18:47 CST
+
+### 8月27日午间（12:39）
+- 心跳检查: 待办 2个（MOC: 查看 Inbox、同步 Feishu 待办，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Aug 27 12:39 CST
+
+### 8月26日晚间（23:02）
+- 心跳检查: 待办 2个（MOC: 查看 Inbox、同步 Feishu 待办，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Aug 26 23:02 CST
+
+### 8月27日早间（07:33）
+- 心跳检查: 待办 2个（MOC: 查看 Inbox、同步 Feishu 待办，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Aug 27 07:33 CST
+
+### 8月27日中午（12:08）
+- 心跳检查: 待办 2个（MOC: 查看 Inbox、同步 Feishu 待办，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Aug 27 12:08 CST
+
+### 8月27日下午（13:09）
+- 心跳检查: 待办 2个（MOC: 查看 Inbox、同步 Feishu 待办，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Aug 27 13:09 CST
+
+### 8月27日下午（13:40）
+- 心跳检查: 待办 2个（MOC: 查看 Inbox、同步 Feishu 待办，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Aug 27 13:40 CST
+
+### 8月27日下午（14:11）
+- 心跳检查: 待办 2个（MOC: 查看 Inbox、同步 Feishu 待办，无变化）
+- MEMORY.md 例行更新
+- 当前时间: Aug 27 14:11 CST
